@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
+from rest_framework import routers
+from landing.views import AlunoViewSets
+from professor.views import ProfessorViewSets
+from rest_framework.authtoken.views import obtain_auth_token
+
+router = routers.DefaultRouter()
+router.register(r'alunos', AlunoViewSets)
+
+router = routers.DefaultRouter()
+router.register(r'professor', ProfessorViewSets)
 
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
+    path('auth-api/', obtain_auth_token)
 ]
