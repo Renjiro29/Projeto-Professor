@@ -23,8 +23,6 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 router = routers.DefaultRouter()
 router.register(r'alunos', AlunoViewSets)
-
-router = routers.DefaultRouter()
 router.register(r'professor', ProfessorViewSets)
 
 urlpatterns = [

@@ -1,26 +1,21 @@
 from django.db import models
 
 # Create your models here.
+from professor.models import Professor
+
 
 class Aluno(models.Model):
-    
     nome = models.CharField(
-        max_length=50,
-        verbose_name='Nome'
+        max_length=255
+    )
+    idade = models.IntegerField()
+    email = models.EmailField()
+    prof_favorito = models.ForeignKey(
+        Professor,
+        on_delete=models.CASCADE,
+        related_name='alunos'
     )
 
-    idade = models.CharField(
-        max_length=50,
-        verbose_name='Idade'
-    )
 
-    email = models.CharField(
-        max_length=255,
-        verbose_name='Email',
-        unique=True 
-    )
-
-    def __str__(self):
-        return self.nome + '  ' + self.email
 
 
